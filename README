@@ -1,0 +1,18 @@
+I wanted to get messages when files were being added to the local
+share point. But I didn't want to get one for every file
+uploaded. inotify-growl was the result of a few nights of work.
+
+BUGS:
+
+Can't run with the -d (daemonized) option correctly yet.
+
+
+
+TODO:
+
+Implement logging.*
+
+Implement a file-based configuration system.
+
+ZeroConf for growl daemon discovery on local networks.
+
