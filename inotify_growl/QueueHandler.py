@@ -7,9 +7,9 @@ class QueueHandler(threading.Thread):
     # the cooldown on the queue to <> prime numbers
     def run(self):
         self.msg = QueueHandler.growl_transport.sendStatus
-        self.msg("Launched Queue Handler")
+        #self.msg("Launched Queue Handler")
         while QueueHandler.running:
-            print "Entered the reducer"
+            print "Awake. Checking for queue READY"
             #self.msg("In the Queue Handler")
             if QueueHandler.media_queue.ready():
                 #self.msg("Queue marked as ready, reducing")
@@ -22,7 +22,7 @@ class QueueHandler(threading.Thread):
     def reduce(self):
         filesadded = 0
         sizeincreased = 0
-        self.msg("Entered the reducer")
+        #self.msg("Entered the reducer")
         try:
             while True:
                 media = QueueHandler.media_queue.queue.get(block=False)
@@ -30,6 +30,7 @@ class QueueHandler(threading.Thread):
                 #self.msg("Processing %s" % media[0])
                 filesadded += 1
                 sizeincreased += media[1]
+                print "Current totaled queue size: %f" % sizeincreased
         except Queue.Empty:
             #self.msg("Reached end of queue")
             pass

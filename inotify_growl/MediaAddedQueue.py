@@ -43,12 +43,16 @@ class MediaAddedQueue:
 
     def b2mb(self, b):
         """Convert from bytes to megabytes."""
-        return (b/1024.0/1024.0)
+        return (float(b)/1024.0/1024.0)
+
+    def b2kb(self, b):
+        """Convert from bytes to kilobytes."""
+        return (float(b)/1024.0)
 
     def file_size(self, in_file):
-        """Return size of a file in megabytes."""
+        """Return size of a file in kilobytes."""
         size = os.stat(in_file)[6]
-        return self.b2mb(size)
+        return self.b2kb(size)
 
     def idle(self):
         """Return a boolean value indicating the idle state of the

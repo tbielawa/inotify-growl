@@ -28,14 +28,12 @@ def runningpid():
 
 def stop(one, two):
     QueueHandler.QueueHandler.running = False
-    
+    watch_notifier.stop()
     growl_transport.sendNote(
         noteName = "Monitor Status",
         noteTitle = "inotify-growl offline",
         noteBody = "inotify-growl for The Media Sharepoint is going offline!")
     growl_transport.stop()
-
-    watch_notifier.stop()
 
 def stoprunning():
     if status() == RUNNING:

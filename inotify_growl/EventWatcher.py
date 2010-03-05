@@ -20,6 +20,7 @@ class MediaWriteFilter(pyinotify.ProcessEvent):
         print "File created: ", event.pathname
         print "Adding to processing queue"
         MediaWriteFilter.media_queue.add_file(event.pathname)
+        print "Added %s to processing queue" % event.pathname
         # MediaWriteFilter.growl_transport.sendNote(
         #     noteName = "Media Update",
         #     noteTitle = "New Media!",
